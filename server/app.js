@@ -1,10 +1,15 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-var app = express();
+const app = express();
+mongoose.Promise = Promise;
+mongoose.connect('localhost:27017/react-scraper')
+  .then(() => { console.log('>>>>> db start')})
+  .catch((err) => { console.log(`>>>>> db error: ${err}`)})
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -16,7 +21,7 @@ app.use('/', require('./controllers'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
