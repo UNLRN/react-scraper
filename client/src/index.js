@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import App from './App';
-import Articles from './components/Articles.js'
+import ArticleContainer from './components/ArticleContainer.js'
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -11,7 +11,7 @@ ReactDOM.render(
 	<Router>
 		<div>
 			<Route exact path='/' component={App} />
-			<Route path='/articles' component={Articles} />
+			<Route path='/articles' component={ArticleContainer} />
 		</div>
 	</Router>,
 	document.getElementById('root')

@@ -5,7 +5,7 @@ const scraper = require('../../util/scraper');
 
 router.get('/get-articles', function (req, res, next) {
 	Article.find()
-		.then(results => { console.log(results) })
+		.then(results => { res.json(results) })
 		.catch(err => { console.log(err) })
 });
 
