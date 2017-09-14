@@ -28,4 +28,19 @@ router.post('/insert', function (req, res) {
 		})
 })
 
+router.put('/update/:articleId', function (req, res) {
+	Article.find({articleId: req.params.id}, function(err, doc) {
+		doc.comments.push('comments object');
+		doc.save();
+	})
+})
+
+router.delete('/delete/:articleId', function (req, res) {
+	Article.findOneAndRemove({articleId: req.params.id}).exec();
+
+})
+
+
+
+
 module.exports = router;
