@@ -20,7 +20,12 @@ class ArticleContainer extends Component {
     }
 
     deleteArticles(id) {
-        console.log(id)
+        console.log('deleting article...');
+        fetch(`api/article/delete/${id}`, {method: 'DELETE'})
+            .then(res => {
+                console.log('deleted article...')
+                this.getArticles();
+            }).catch(err => console.log(err));
     }
 
     getArticles() {

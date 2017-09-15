@@ -37,7 +37,16 @@ router.put('/update/:articleId', function (req, res) {
 })
 
 router.delete('/delete/:articleId', function (req, res) {
-	Article.findOneAndRemove({articleId: req.params.id}).exec();
+    Article
+    .findOneAndRemove({articleId: req.params.articleId})
+    .exec()
+    .then(() => {
+        res.status(200)
+        res.send('deleted article')
+    }).catch(err => {
+        res.status(500);
+        res.send(err);
+    })
 
 })
 
