@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 mongoose.Promise = Promise;
-mongoose.connect('localhost:27017/react-scraper')
+mongoose.connect('localhost:27017/reactscraper')
   .then(() => { console.log('>>>>> db start')})
   .catch((err) => { console.log(`>>>>> db error: ${err}`)})
 

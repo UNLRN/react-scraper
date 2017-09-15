@@ -12,6 +12,7 @@ router.get('/get-articles', function (req, res, next) {
 router.post('/insert', function (req, res) {
 	scraper()
 		.then(results => {
+            console.log(results)
 			results.forEach(result => {
 				Article.find({ articleId: result.articleId }, null, {limit: 1}, function (err, docs) {
 					if (docs.length == 0) {

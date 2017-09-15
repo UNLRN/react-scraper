@@ -1,22 +1,45 @@
 import React, { Component } from 'react';
-import ArticleList from './ArticleList.js'
+import ScrapeButton from './ScrapeButton.js';
+import ArticleList from './ArticleList.js';
 
 class ArticleContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { articles: [] }
+        this.state = { articles: [] }
+        this.scrape = this.scrape.bind(this);
+        this.getArticles = this.getArticles.bind(this);
+        this.deleteArticles = this.deleteArticles.bind(this);
 	}
 
+    scrape() {
+        fetch('api/article/insert', {method: 'POST'})
+            .then(res => {
+                console.log('getting articles...')
+                this.getArticles();
+            }).catch(err => console.log(err))
+    }
+
+    deleteArticles(id) {
+        console.log(id)
+    }
+
+    getArticles() {
+        fetch('/api/article/get-articles')
+            .then(res => res.json())
+            .then(articles => { this.setState({ articles })})
+            .catch(err => {console.log(err)})
+    }
+
 	componentDidMount() {
-		fetch('/api/article/get-articles')
-			.then(res => res.json())
-			.then(articles => { this.setState({ articles })})
-			.catch(err => {console.log(err)})
+        this.getArticles();
 	}
 
 	render() {
 		return (
-			<ArticleList articles={this.state.articles} />
+            <div>
+                <ScrapeButton handler={this.scrape} />
+                <ArticleList articles={this.state.articles} deleteHandler={this.deleteArticles} />
+            </div>
 		);
 	}
 }
