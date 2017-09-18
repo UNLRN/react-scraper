@@ -20,8 +20,7 @@ const ArticleSchema = new Schema({
 		url: String
 	},
 	comments: [{
-		body: String,
-		date: Date
+		type: Schema.Types.ObjectId, ref: 'Comment'
 	}],
 })
 

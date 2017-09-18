@@ -23,7 +23,7 @@ class ArticleContainer extends Component {
         console.log('deleting article...');
         fetch(`api/article/delete/${id}`, {method: 'DELETE'})
             .then(res => {
-                console.log('deleted article...')
+                console.log(`deleted article #${id}...`)
                 this.getArticles();
             }).catch(err => console.log(err));
     }
@@ -43,7 +43,7 @@ class ArticleContainer extends Component {
 		return (
             <div>
                 <ScrapeButton handler={this.scrape} />
-                <ArticleList articles={this.state.articles} deleteHandler={this.deleteArticles} />
+                <ArticleList articles={this.state.articles} eventHandler={this.deleteArticles} />
             </div>
 		);
 	}

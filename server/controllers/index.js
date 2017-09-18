@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios');
 
 router.use('/api/article', require('./api/article'))
+router.use('/api/comment', require('./api/comment'))
 
 module.exports = router;

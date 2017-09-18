@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Article = require('../../models/Article');
+const models = require('../../models');
+const Article = models.Article;
 const scraper = require('../../util/scraper');
 
 router.get('/get-articles', function (req, res, next) {
