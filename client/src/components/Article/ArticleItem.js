@@ -8,7 +8,7 @@ const ArticleItem = (props) => {
     let eventHandler = props.eventHandler
 
     return (
-        <div className='card w-100 m-3 p-3'>
+        <div className='card w-100 m-3 p-3' id={articleId}>
             <div>
                 <p>{title}</p>
                 <a className='d-block' href={url}>{url}</a>
