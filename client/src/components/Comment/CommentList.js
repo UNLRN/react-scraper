@@ -1,15 +1,21 @@
 import React from 'react';
 
-const Comments = ({commentList}) => {
+const CommentList = ({activeArticle, eventHandler}) => {
     return (
-        <div>
-        {commentList.map((comment) => {
-            <div>
-                <h3>{comment.date}</h3>
-                <p>{comment.body}</p>
-            </div>
+        <div className='container'>
+        <div className='row'>
+            {activeArticle.comments.map(({ _id, text, date }) => {
+                return (
+                    <CommentItem
+                        key={_id}
+                        text={text}
+                        date={date}
+                        eventHandler={eventHandler}
+                    />
+                )
             })}
         </div>
+    </div>
     );
 };
 

@@ -11,7 +11,7 @@ class Api extends Component {
 	}
 
 	getData() {
-        fetch('/api/data')
+        fetch('/api/articles')
             .then(res => res.json())
             .then(data => { this.setState({ data })})
             .catch(err => {console.log(err)})

@@ -4,8 +4,9 @@ const models = require('../../models');
 const Article = models.Article;
 const scraper = require('../../util/scraper');
 
-router.get('/get-articles', function (req, res, next) {
-	Article.find()
+router.get('/', function (req, res, next) {
+    Article.find()
+        .populate('Comments')
 		.then(results => { res.json(results) })
 		.catch(err => { console.log(err) })
 });
